@@ -24,8 +24,10 @@ int main (int argc, char *argv[])
 
 #ifdef USE_MYMATH
 	double outputValue = mysqrt(inputValue);
+	printf("Use mymath function!\n");
 #else
 	double outputValue = sqrt(inputValue);
+	printf("Use default function!\n");
 #endif
 	fprintf(stdout,"The square root of %g is %g\n",
 			inputValue, outputValue);
