@@ -9,4 +9,5 @@
 #define _MATHFUNCTION_H
 
 float mysqrt(float x);
+float logexp(float x);
 #endif

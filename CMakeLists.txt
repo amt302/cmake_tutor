@@ -10,6 +10,7 @@ SET(CMAKE_C_COMPILER gcc)
 SET(CMAKE_CXX_COMPILER g++)
 add_compile_options(-std=c++11)
 
+#1.add version number
 #The version number
 set (Tutorial_VERSION_MAJOR 1)
 set (Tutorial_VERSION_MINOR 0)
@@ -25,6 +26,7 @@ configure_file(
 #so that we fill find TutorialConfig.h
 include_directories("${PROJECT_BINARY_DIR}")
 
+#2.add lib
 #add the MathFunctions library
 if(USE_MYMATH)
 	include_directories("${PROJECT_SOURCE_DIR}/MathFunctions")
@@ -36,7 +38,7 @@ endif(USE_MYMATH)
 add_executable(Tutorial tutorial.cxx)
 target_link_libraries(Tutorial ${EXTRA_LIBS})
 
-
+#3.install and ctest
 #add the install targets(must follow the executable)
 install(TARGETS Tutorial DESTINATION bin)
 install(FILES "${PROJECT_BINARY_DIR}/TutorialConfig.h"
@@ -75,3 +77,11 @@ endmacro (do_test)
 # do a bunch of result based tests
 do_test (25 "25 is 2")
 do_test (-25 "-25 is 0")
+
+
+#4.
+#does this system provide the log and exp functions?
+include(CheckFunctionExists)
+check_function_exists (log HAVE_LOG)
+check_function_exists (exp HAVE_EXP)
+

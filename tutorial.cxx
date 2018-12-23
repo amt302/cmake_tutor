@@ -29,7 +29,16 @@ int main (int argc, char *argv[])
 	double outputValue = sqrt(inputValue);
 	printf("Use default function!\n");
 #endif
+
+	
 	fprintf(stdout,"The square root of %g is %g\n",
 			inputValue, outputValue);
+
+#if defined (HAVE_LOG) && defined (HAVE_EXP)
+	double outputValue2=logexp(inputValue);
+	printf("The logexp of %g is %g\n",inputValue,outputValue2);
+#else
+	printf("The logexp is not defined!\n");
+#endif
 	return 0;
 }
