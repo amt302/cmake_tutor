@@ -5,6 +5,10 @@
 #include <math.h>
 #include "TutorialConfig.h"
 
+#ifdef USE_MYMATH
+#include "MathFunction.h"
+#endif
+
 int main (int argc, char *argv[])
 {
 	if (argc < 2)
@@ -17,7 +21,12 @@ int main (int argc, char *argv[])
 		return 1;
 	}
 	double inputValue = atof(argv[1]);
+
+#ifdef USE_MYMATH
+	double outputValue = mysqrt(inputValue);
+#else
 	double outputValue = sqrt(inputValue);
+#endif
 	fprintf(stdout,"The square root of %g is %g\n",
 			inputValue, outputValue);
 	return 0;
